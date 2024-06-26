@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>June baby</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <br><br>
+    <center>
+        <div id="container">
+            <!-- onblur="takeValue()"  -->
+            <input type="text" placeholder="Enter name" id="input-name">
+            <!-- <button id="submit-btn" onclick="takeValue()" >Submit</button> -->
+            <input type="reset" id="submit-btn" onclick="takeValue()" placeholder="" value="Enter">
+            <button id="reset-btn" onclick="reset()">Reset</button>
+        </div>
+    </center>
+    <br><br>
+    <table>
+        <tr>
+            <td id="b-12"></td>
+            <td id="b-1"></td>
+            <td id="b-2"></td>
+            <td id="b-3"></td>
+        </tr>
+        <tr>
+            <td id="b-11"></td>
+            <td colspan="2" id="m1">
+                <p>Marks</p> <input type="text" id="mark">
+            </td>
+            <td id="b-4"></td>
+        </tr>
+        <tr>
+            <td id="b-10"></td>
+            <td colspan="2"></td>
+            <td id="b-5"></td>
+        </tr>
+        <tr>
+            <td id="b-9"></td>
+            <td id="b-8"></td>
+            <td id="b-7"></td>
+            <td id="b-6"></td>
+        </tr>
+    </table>
+    <center>
+        <div id="status-div">
+            <p>Status</p>
+            <input type="text" id="status">
+        </div>
+
+        <script src="script.js"></script>
+    </center>
+
+
+</body>
+
+</html>
