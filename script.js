@@ -1,4 +1,3 @@
-
 const num = {
     A: 1, J: 1, S: 1,
     B: 2, K: 2, T: 2,
@@ -23,39 +22,24 @@ const numInitial = {
 };
 function initializeArrays(n) {
     const arrays = [];
-
     for (let i = 0; i <= n; i++) {
         const newArray = []; // Create a new empty array
         arrays.push(newArray); // Add the new array to the arrays array
     }
-
     return arrays;
 }
-const n = 12;
-const box = initializeArrays(n);
-
-var str;
-var strSplit;
-let strLengthWithoutSpace = 0;
-function takeValue() {
-
-    /*
-        for (let w = 1; w <= 12; w++) {
-            var test = `b-${w}`
-            console.log(document.getElementById(test).innerHTML);
-            console.log("\n");
-            document.getElementById(test).innerHTML = ' ';
-        }*/
-    // str = ' ';
-    str = document.querySelector('input').value;
-    for (let a = 0; a < str.length; a++) {
-        if (str[a] !== ' ') {
-            strLengthWithoutSpace++;
-        }
+const n = 12;const markBox = document.getElementById("mark");
+document.getElementById("input-name").onkeyup = function () {
+    let mark = 0, flag = 0;
+    markBox.value = 0;
+    for (let w = 1; w <= 12; w++) {
+        var test = `b-${w}`
+        document.getElementById(test).innerHTML = ' ';
     }
-    strSplit = str.split(" ");
-    console.log(str);
-    console.log(strSplit);
+    const box = initializeArrays(n);
+    const str = this.value;
+    const strSplit = str.split(" ");
+    let strLengthWithoutSpace = strSplit.join("").length;
     let temp = 0, count = 0;
     var idName;
     var tempStr;
@@ -63,9 +47,7 @@ function takeValue() {
         if (j == 0) {
             if (strSplit[j].length == 1) {
                 //INITAL PART
-                console.log("IT IS INITIAL")
                 temp = temp + numInitial[strSplit[j]];
-                console.log(strSplit[j]);
                 if (temp > 12) {
                     temp = temp % 12;
                 }
@@ -74,21 +56,12 @@ function takeValue() {
                 }
                 idName = `b-${temp}`;
                 // idName = 'b-0';
-                console.log(idName);
-                console.log(temp);
                 box[temp].push(strSplit[j]);
-                console.log(box[temp]);
-                console.log(box[temp].toString());
                 count++;
                 document.getElementById(idName).innerHTML = box[temp].toString();
             }
-
             if (strSplit[j].length > 1) {
                 for (let k = 0; k < strSplit[j].length; k++) {
-
-                    console.log(strSplit[j]);
-                    console.log(strSplit[j][k]);
-
                     temp = temp + num[strSplit[j][k]];
                     if (k != 0) {
                         temp = temp - 1;
@@ -97,14 +70,9 @@ function takeValue() {
                         temp = temp % 12;
                     }
                     idName = `b-${temp}`;
-                    console.log(idName);
-                    console.log(temp);
                     box[temp].push(strSplit[j][k]);
-                    console.log(box[temp]);
-                    console.log(box[temp].toString());
                     count++;
                     document.getElementById(idName).innerHTML = box[temp].toString();
-
                 }
             }
         }
@@ -112,34 +80,21 @@ function takeValue() {
         if (j != 0) {
             if (strSplit[j].length == 1) {
                 console.log("2 initial!!\n\n");
-                console.log(strSplit[j]);
-                console.log(`${strSplit[j]} value is ${numInitial[strSplit[j]]}`);
-                console.log(temp);
                 temp = temp + numInitial[strSplit[j]];
                 temp = temp - 1;
-                console.log(temp);
                 if (temp % 12 == 0) {
                     temp = 12;
                 } else
                     if (temp > 12) {
                         temp = temp % 12;
                     }
-                console.log(temp);
                 idName = `b-${temp}`;
-                console.log(idName);
-                console.log(temp);
                 box[temp].push(strSplit[j]);
-                console.log(box[temp]);
-                console.log(box[temp].toString());
                 count++;
                 document.getElementById(idName).innerHTML = box[temp].toString();
             }
-
             if (strSplit[j].length > 1) {
                 for (let k = 0; k < strSplit[j].length; k++) {
-                    console.log(strSplit[j]);
-                    console.log(strSplit[j][k]);
-
                     temp = temp + num[strSplit[j][k]];
                     /*if (k = 0) {
                         temp = temp - 1;
@@ -149,19 +104,12 @@ function takeValue() {
                         temp = temp % 12;
                     }
                     idName = `b-${temp}`;
-                    console.log(idName);
-                    console.log(temp);
                     box[temp].push(strSplit[j][k]);
-                    console.log(box[temp]);
-                    console.log(box[temp].toString());
                     count++;
                     document.getElementById(idName).innerHTML = box[temp].toString();
-
                 }
             }
         }
-        console.log(count);
-        console.log(strLengthWithoutSpace);
         var statusOutput = document.getElementById("status");
         if (count == strLengthWithoutSpace) {
             statusOutput.value = "success";
@@ -178,11 +126,7 @@ function takeValue() {
         }
     }
     for (let i = 1; i <= n; i++) {
-        console.log(`Box ${i} : ${box[i]} \n`);
-    }
-    let mark = 0, flag = 0;
-    for (let i = 1; i <= n; i++) {
-        console.log(`Box ${i} len : ${box[i].length}`)
+        console.log(`Box ${i} len : ${box[i].length} \n ${mark}`)
         if (i == 1 || i == 2 || i == 4) {
             if (box[i].length > 0)
                 mark += 10;
@@ -192,7 +136,6 @@ function takeValue() {
                 mark += 15;
         }
         else if (i == 10) {
-
             if (box[i].length > 0) {
                 flag = 1;
                 mark += 40;
@@ -205,21 +148,15 @@ function takeValue() {
             else if (box[i].length == 2) {
                 mark += 0;
             }
-            else {
+            else if ((box[i].length > 2)) {
                 mark = mark - (box[i].length - 2) * 5;
             }
         }
     }
-    var markBox = document.getElementById("mark");
     if (flag == 1) {
         markBox.value = "#" + mark;
     }
-    else {
-        markBox.value = mark;
-    }
-
-    console.log(`mark is ${mark}`);
-    // console.log(count);
+    markBox.value = mark;
 }
 function reset() {
     location.reload();
